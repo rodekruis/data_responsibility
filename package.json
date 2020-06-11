@@ -1,23 +1,21 @@
 {
-    "name": "responsible_ai",
+    "name": "data_responsibility",
     "version": "1.0.0",
-    "description": "Estimate the responsibility of your A.I. project in terms of fairness, accountability, confidentiality and transparency.",
+    "description": "Estimate your data responsibility score.",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/gulfaraz/responsible_ai.git"
+        "url": "git+https://github.com/gulfaraz/data_responsibility.git"
     },
     "keywords": [
-        "responsible_ai",
+        "data responsibility",
         "ethical",
-        "responsible",
-        "artificial",
-        "intelligence"
+        "responsible"
     ],
     "author": "Gulfaraz Rahman",
-    "homepage": "https://rodekruis.github.io/responsible_ai",
+    "homepage": "https://rodekruis.github.io/data_responsibility",
     "license": "GPL-3.0",
     "bugs": {
-        "url": "https://github.com/gulfaraz/responsible_ai/issues"
+        "url": "https://github.com/gulfaraz/data_responsibility/issues"
     },
     "private": true,
     "dependencies": {

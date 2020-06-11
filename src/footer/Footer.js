@@ -6,10 +6,10 @@ export default class Footer extends React.Component {
             <footer className="footer">
                 <div className="content has-text-centered">
                     <p>
-                        <strong>Responsible A.I.</strong> by{" "}
+                        <strong>Data Responsibility</strong> by{" "}
                         <a href="https://www.510.global/">510.global</a> under
                         the{" "}
-                        <a href="https://github.com/gulfaraz/responsible_ai/blob/master/LICENSE">
+                        <a href="https://github.com/gulfaraz/dr_score/blob/master/LICENSE">
                             GPL-3.0 license
                         </a>
                         .

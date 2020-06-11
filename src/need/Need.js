@@ -28,29 +28,33 @@ export default class Need extends React.Component {
                 <section className="container has-text-centered">
                     <Link
                         className="button is-primary is-outlined is-large is-fullwidth"
-                        to="/fact"
+                        to="/dr"
                     >
-                        Calculate F.A.C.T. Score
+                        Calculate D.R. Score
                     </Link>
                 </section>
                 <section className="hero">
                     <div className="hero-body">
                         <div className="container">
                             <h1 className="title">
-                                The Need for Responsible A.I.
+                                The Need for Data Responsibility
                             </h1>
                         </div>
                     </div>
                 </section>
                 <div className="container">
                     <p>
-                        Artificial Intelligence or A.I. encompasses a wide range
-                        of fields and methods. Formulating a consistent
-                        definition for A.I. remains evasive yet we attempt to
-                        draw a framework to measure ethical practices. In order
-                        to cast a wide net across the range of A.I. topics and
-                        remain tangible in practical solutions, we rely on high
-                        level abstractions of the involved components.
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and
+                        scrambled it to make a type specimen book. It has
+                        survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged.
+                        It was popularised in the 1960s with the release of
+                        Letraset sheets containing Lorem Ipsum passages, and
+                        more recently with desktop publishing software like
+                        Aldus PageMaker including versions of Lorem Ipsum.
                     </p>
                     <img
                         className="components-image"
@@ -79,10 +83,17 @@ export default class Need extends React.Component {
                         />
                     </map>
                     <p>
-                        Any system can be modelled using input-process-output
-                        with reasonable encapsulation of the concepts.
-                        Similarly, an A.I. system can be represented using a
-                        data-model-deploy pipeline.
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and
+                        scrambled it to make a type specimen book. It has
+                        survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged.
+                        It was popularised in the 1960s with the release of
+                        Letraset sheets containing Lorem Ipsum passages, and
+                        more recently with desktop publishing software like
+                        Aldus PageMaker including versions of Lorem Ipsum.
                     </p>
                 </div>
             </div>

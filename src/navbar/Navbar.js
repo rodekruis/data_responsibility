@@ -55,15 +55,15 @@ export default class Navbar extends React.Component {
                     <div className="navbar-start">
                         <div className="navbar-item has-dropdown is-hoverable">
                             <span className="navbar-link">
-                                Responsible A.I.
+                                Data Responsibility
                             </span>
 
                             <div className="navbar-dropdown">
                                 <Link className="navbar-item" to="/">
-                                    The Need for Responsible A.I.
+                                    The Need for Data Responsibility
                                 </Link>
-                                <Link className="navbar-item" to="/fact">
-                                    Calculate F.A.C.T. Score
+                                <Link className="navbar-item" to="/dr">
+                                    Calculate D.R. Score
                                 </Link>
                                 <Link className="navbar-item" to="/glossary">
                                     Glossary
