@@ -42,7 +42,7 @@ export default class FACT extends React.Component {
                     question_row.gsx$answertype.$t === "Dropdown"
                         ? DEFAULT_ANSWER
                         : "",
-                weight: 1,
+                weight: question_row.gsx$answertype.$t === "Dropdown" ? 1 : 0,
             };
         });
     }
@@ -163,7 +163,9 @@ export default class FACT extends React.Component {
                 <div className="field-body">
                     {
                         this.state.questions.filter(
-                            question => question.answer !== NO_ANSWER
+                            question =>
+                                question.answer !== NO_ANSWER &&
+                                question.answer.length > 0
                         ).length
                     }
                     /{this.state.questions.length}

@@ -188,7 +188,9 @@ export default class Report extends React.Component {
         doc.text(
             "Answered " +
                 this.props.questions.filter(
-                    question => question.answer !== this.props.no_answer
+                    question =>
+                        question.answer !== this.props.no_answer &&
+                        question.answer.length > 0
                 ).length +
                 " of " +
                 this.props.questions.length +
