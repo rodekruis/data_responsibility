@@ -221,7 +221,48 @@ export default class Report extends React.Component {
         });
     }
 
+    async post_data(url = "", data = {}) {
+        const response = await fetch(url, {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: data,
+        });
+        return response.json();
+    }
+
+    save_to_spreadsheet() {
+        const data = {
+            "Project Name": this.state.project_name,
+            "Evaluator Name": this.state.evaluator_name,
+            "Project Comments": this.state.project_comments,
+            "D.R. Score": this.props.calculate_score(
+                null,
+                null,
+                this.props.questions
+            ),
+        };
+        this.props.questions.forEach(question => {
+            data[question.question] = question.answer;
+        });
+        const encoded_form_data = Object.keys(data)
+            .map(function(k) {
+                return (
+                    encodeURIComponent(k) + "=" + encodeURIComponent(data[k])
+                );
+            })
+            .join("&");
+        this.post_data(
+            "https://script.google.com/macros/s/AKfycbwTXNasjTvZozGgnQsTVBWEGEHB-BRRCiF88VGdoOmyhEntWpsV/exec",
+            encoded_form_data
+        );
+    }
+
     create() {
+        this.save_to_spreadsheet();
         const doc = new jsPDF();
         this.add_title(doc);
         const timestamp = this.add_timestamp(doc);
