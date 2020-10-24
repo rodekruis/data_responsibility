@@ -207,7 +207,7 @@ export default class Report extends React.Component {
         questions.map(question => {
             question_table.push([
                 question.question,
-                this.props.answer_key[question.answer],
+                this.props.answer_key[question.answer] || question.answer,
             ]);
             return question;
         });

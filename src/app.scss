@@ -38,6 +38,11 @@ html {
 .field-body {
     flex-grow: 0;
     margin-right: 2rem;
+
+    .textarea-container {
+        width: 80%;
+        margin: 1rem auto;
+    }
 }
 
 .round-interaction {

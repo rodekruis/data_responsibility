@@ -6,6 +6,9 @@ import Badge from "./Badge";
 const DEFAULT_ANSWER = "idk";
 const NO_ANSWER = "idk";
 
+const SPREADSHEET_URL =
+    "https://spreadsheets.google.com/feeds/list/1yJLzqMXmgvEsZFpABbvE57cVlLdou_jOW1nKGCz6mpo/3/public/values?alt=json";
+
 const ANSWER_KEY = {
     yes: "Yes",
     no: "No",
@@ -21,11 +24,26 @@ export default class FACT extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({
-            questions: require("../rubric.json").questions.map(item => {
-                item.answer = DEFAULT_ANSWER;
-                return item;
-            }),
+        fetch(SPREADSHEET_URL)
+            .then(response => response.json())
+            .then(spreadsheet_data => {
+                this.setState({
+                    questions: this.get_spreadsheet_questions(spreadsheet_data),
+                });
+            });
+    }
+
+    get_spreadsheet_questions(spreadsheet_data) {
+        return spreadsheet_data.feed.entry.map(question_row => {
+            return {
+                question: question_row.gsx$question.$t,
+                answerType: question_row.gsx$answertype.$t,
+                answer:
+                    question_row.gsx$answertype.$t === "Dropdown"
+                        ? DEFAULT_ANSWER
+                        : "",
+                weight: 1,
+            };
         });
     }
 
@@ -89,28 +107,44 @@ export default class FACT extends React.Component {
 
     load_question(item, index) {
         return (
-            <div className="field is-horizontal">
+            <div
+                className={
+                    "field" +
+                    (item.answerType === "Dropdown" ? " is-horizontal" : "")
+                }
+            >
                 <div className="field-label is-size-4">{item.question}</div>
                 <div className="field-body">
-                    <div className="select">
-                        <select
-                            value={item.answer}
-                            onChange={this.change_answer(index)}
-                        >
-                            {Object.entries(ANSWER_KEY).map(
-                                ([answer_key, answer_value]) => {
-                                    return (
-                                        <option
-                                            value={answer_key}
-                                            key={answer_key}
-                                        >
-                                            {answer_value}
-                                        </option>
-                                    );
-                                }
-                            )}
-                        </select>
-                    </div>
+                    {item.answerType === "Dropdown" ? (
+                        <div className="select">
+                            <select
+                                value={item.answer}
+                                onChange={this.change_answer(index)}
+                            >
+                                {Object.entries(ANSWER_KEY).map(
+                                    ([answer_key, answer_value]) => {
+                                        return (
+                                            <option
+                                                value={answer_key}
+                                                key={answer_key}
+                                            >
+                                                {answer_value}
+                                            </option>
+                                        );
+                                    }
+                                )}
+                            </select>
+                        </div>
+                    ) : (
+                        <div className="textarea-container">
+                            <textarea
+                                className="textarea"
+                                placeholder="Enter your answer here"
+                                value={item.answer}
+                                onChange={this.change_answer(index)}
+                            ></textarea>
+                        </div>
+                    )}
                 </div>
             </div>
         );
