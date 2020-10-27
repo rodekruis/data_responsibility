@@ -6,6 +6,11 @@ import Badge from "./Badge";
 const DEFAULT_ANSWER = "idk";
 const NO_ANSWER = "idk";
 
+const ANSWER_TYPE = {
+    TEXT: "Text",
+    DROPDOWN: "Dropdown",
+};
+
 const SPREADSHEET_URL =
     "https://spreadsheets.google.com/feeds/list/1yJLzqMXmgvEsZFpABbvE57cVlLdou_jOW1nKGCz6mpo/3/public/values?alt=json";
 
@@ -42,7 +47,8 @@ export default class FACT extends React.Component {
                     question_row.gsx$answertype.$t === "Dropdown"
                         ? DEFAULT_ANSWER
                         : "",
-                weight: question_row.gsx$answertype.$t === "Dropdown" ? 1 : 0,
+                weight: 1,
+                answerPoint: question_row.gsx$answerpoint.$t,
             };
         });
     }
@@ -50,7 +56,13 @@ export default class FACT extends React.Component {
     calculate_score(metric, component, questions = this.state.questions) {
         let numerator = questions
             .map(question => {
-                const answer_weight = question.answer === "yes";
+                const answer = question.answer.trim();
+                let answer_weight = 0;
+                if (question.answerType === ANSWER_TYPE.DROPDOWN) {
+                    answer_weight = answer === question.answerPoint;
+                } else {
+                    answer_weight = answer.length > 0;
+                }
                 return answer_weight * question.weight;
             })
             .reduce((accumulator, current) => accumulator + current, 0);
@@ -164,8 +176,8 @@ export default class FACT extends React.Component {
                     {
                         this.state.questions.filter(
                             question =>
-                                question.answer !== NO_ANSWER &&
-                                question.answer.length > 0
+                                question.answer.trim() !== NO_ANSWER &&
+                                question.answer.trim().length > 0
                         ).length
                     }
                     /{this.state.questions.length}
