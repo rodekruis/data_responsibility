@@ -84,7 +84,10 @@ export default class FACT extends React.Component {
             <nav className="level">
                 <div className="level-item has-text-centered">
                     <div>
-                        <p className="title">D.R. Score</p>
+                        <p className="subtitle">
+                            Calculate the Data Responsibility score for your
+                            project
+                        </p>
                     </div>
                 </div>
                 <div className="level-item"></div>
