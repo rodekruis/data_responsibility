@@ -37,7 +37,9 @@ jobs:
 
             - name: Set Credentials
               if: github.event_name == 'push'
-              uses: oleksiyrudenko/gha-git-credentials@v2-latest
+              run:
+                  git config user.email "github-action@users.noreply.github.com"
+                  && git config user.name "GitHub Action"
 
             - name: Build and Deploy
               if: github.event_name == 'push'
