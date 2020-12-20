@@ -26,7 +26,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
 
-            - name: Install Packages
+            - name: Install
               run: npm ci
 
             - name: Build
@@ -34,6 +34,10 @@ jobs:
                   github.event_name == 'pull_request' && github.event.action !=
                   'closed'
               run: npm run build --if-present
+
+            - name: Set Credentials
+              if: github.event_name == 'push'
+              uses: oleksiyrudenko/gha-git-credentials@v2-latest
 
             - name: Build and Deploy
               if: github.event_name == 'push'
