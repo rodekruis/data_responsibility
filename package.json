@@ -26,7 +26,7 @@
         "bulma": "^0.8.0",
         "bulma-tooltip": "^3.0.2",
         "image-map-resizer": "^1.0.10",
-        "jspdf": "^1.5.3",
+        "jspdf": "^2.3.1",
         "jspdf-autotable": "^3.2.13",
         "node-sass": "^4.13.1",
         "react": "^16.13.0",
